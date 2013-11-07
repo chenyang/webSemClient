@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="App">
+<html ng-app="App" lang="fr" ng-cloak>
 <head>
 <meta charset="utf-8" />
 
@@ -23,6 +23,12 @@
 <!-- font-awesome -->
 <link rel="stylesheet"
 	href="bower_components/font-awesome/css/font-awesome.min.css">
+	
+<!-- global css -->	
+<link rel="stylesheet" href="css/global.css">
+<!-- pages -->
+<link rel="stylesheet" href="css/pages.css">	
+	
 </head>
 
 
@@ -68,6 +74,8 @@
 		src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"
 		type="text/javascript"></script>
 
+	<!-- 3rd -->
+	<script src="scripts/3rd/angular-webstorage.js" type="text/javascript"></script>
 
 	<!-- App.js -->
 	<script src="scripts/app.js"></script>
@@ -77,14 +85,19 @@
 	<!-- Application Modules -->
 	<!-- Module Global -->
 	<script src="scripts/global/service/GlobalService.js"></script>
+	<script src="scripts/global/controller/RootCtrl.js"></script>
 	<script src="scripts/config/serverConfig.js"></script>
 
-	<!-- Module Accueil -->
-	<script src="scripts/accueil/controller/AccueilCtrl.js"></script>
-
+	<!-- Modules specifiques-->
+	<script src="scripts/module/controller/LoginCtrl.js"></script>
+	<script src="scripts/module/controller/AccueilCtrl.js"></script>
+	<script src="scripts/module/controller/FestivaleCtrl.js"></script>
+	<script src="scripts/module/controller/ConcertCtrl.js"></script>
+	<script src="scripts/module/controller/GroupeCtrl.js"></script>
+	
 
 	<!-- ng-view for all application -->
-	<div ng-view></div>
+	<div class="root-view" ng-controller="RootCtrl" ng-view></div>
 
 
 </body>

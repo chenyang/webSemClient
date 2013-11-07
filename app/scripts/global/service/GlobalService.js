@@ -5,11 +5,26 @@
 	//Navigation
 	mod.constant('Navigation',
 			[
+			 {  when:"/login", 
+				 templateUrl:"views/login.html", 
+				 controller:"LoginCtrl"
+			 }, 
 			 {  when:"/accueil", 
-				 templateUrl:"views/accueil/accueil.html", 
+				 templateUrl:"views/accueil.html", 
 				 controller:"AccueilCtrl"
+			 },
+			 {  when:"/festivales", 
+				 templateUrl:"views/festivale.html", 
+				 controller:"FestivaleCtrl"
+			 },
+			 {  when:"/concerts", 
+				 templateUrl:"views/concert.html", 
+				 controller:"ConcertCtrl"
+			 },
+			 {  when:"/groupes", 
+				 templateUrl:"views/group.html", 
+				 controller:"GroupCtrl"
 			 }
-
 			 ]);
 	
 	
@@ -29,7 +44,8 @@
 						return $http({
 							url:compo_url+uri,
 							method:"GET", 
-							cache:false
+							cache:false, 
+							timeout:2000
 						}); 
 					}, 
 
@@ -38,6 +54,7 @@
 							url:compo_url+uri,
 							method:"POST",
 							cache:false,
+							timeout:2000,
 							data:content
 						});
 					}

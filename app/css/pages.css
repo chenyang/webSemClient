@@ -1,0 +1,23 @@
+/***RootView***/
+.root-view{
+	margin-top:80px;
+}
+
+
+
+/***Page Login***/
+.login{
+	position:relative;
+	margin-top:50px;
+	width:50%;
+	margin:0px auto;
+	padding:30px;
+	border:solid lightGrey 1px;
+}
+
+.accueil{
+	width:50%;
+	margin:0px auto;
+	padding:30px;
+	border:solid lightGrey 1px;
+}

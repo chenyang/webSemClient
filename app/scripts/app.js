@@ -6,7 +6,7 @@
 
 	var modules = [
 	               { nomModule: 'global', deps: [] },
-	               { nomModule: 'accueil', deps: [] }
+	               { nomModule: 'mod', deps: [] }
 	              ];
 
 
@@ -24,7 +24,7 @@
 		mod.deps = _.flatten([filter, directive, controller, service]);
 	});  
 
-	var appDeps = ['ngCookies', 'ngGrid', 'ui.directives', 'ui.bootstrap', 'global.filter'];
+	var appDeps = ['ngCookies', 'ngGrid', 'ui.directives', 'ui.bootstrap', 'global.filter', 'webStorageModule'];
 
 	_.each(modules, function(mod){
 		appDeps.push(mod.deps);
@@ -45,7 +45,7 @@
 		var listeNavigation=Navigation;
 		_.each(listeNavigation, function(navigation){
 			$routeProvider.when(''+navigation.when, {templateUrl:navigation.templateUrl, controller:navigation.controller, view:navigation.view});
-			$routeProvider.otherwise({redirectTo:'/accueil'});
+			$routeProvider.otherwise({redirectTo:'/login'});
 		});
 	}]);
 	
