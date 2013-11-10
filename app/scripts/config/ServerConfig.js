@@ -13,7 +13,7 @@
 //===>information for the server who provides REST service
   mod.constant('serverRESTConfig', {
     protocal:'http://', 
-    domain:'192.168.32.132',
+    domain:'192.168.32.133',
     port:9000, 
     context:'/'
   });

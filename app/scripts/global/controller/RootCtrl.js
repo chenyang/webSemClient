@@ -2,8 +2,12 @@
 	'use strict';
 	var module = angular.module('global.controller');
 
-	module.controller('RootCtrl', ['$scope', '$rootScope', 'webStorage', 
-	                               function($scope, $rootScope, webStorage){
+	module.controller('RootCtrl', ['$scope', '$rootScope', 'webStorage', '$location',
+	                               function($scope, $rootScope, webStorage, $location){
+		
+		//Par defaut:
+		$scope.spinner = false;
+		
 		
 		//Pour definir et assigner les variables globales
 		
@@ -26,6 +30,30 @@
 			console.log(webStorage.session.get('$info_geo'));
 		});
 		
+		
+		
+		//La gestion de spinner
+		$scope.$on('spinnerOn', function(event, data){
+			$scope.spinner = true;
+			console.log('spinnerON');
+		});
+		
+		$scope.$on('spinnerOff', function(event, data){
+			$scope.spinner = false;
+			console.log('spinnerOFF');
+		});
+		
+		
+		//La gestion de session
+		$scope.$on('$routeChangeStart', function(event, next, current){
+			
+			//verifier si la session est toujours valide
+			if(_.isUndefined(webStorage.session.get('$info_user'))||webStorage.session.get('$info_user')==null){
+				//redigerer a la page login
+				$location.path('/login');
+			}
+			
+		});
 		
 	}]);
 

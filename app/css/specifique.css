@@ -1,0 +1,26 @@
+#spinner{
+	width:45px;
+}
+
+.block-spinner{
+	position:absolute;
+	top:40%;
+	left:50%;
+}
+
+.google-map{
+	height:300px;
+	width:100%;
+}
+
+
+/***Specifique pour resoudre le probleme d'affichage icon
+conflict google - bootstrap***/
+.gm-style img {
+    max-width: none;
+  }
+
+  .gm-style label {
+    width: auto; display:inline;
+  }
+

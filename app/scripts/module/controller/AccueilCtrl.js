@@ -2,35 +2,68 @@
 	'use strict';
 	var module = angular.module('mod.controller');
 
-	module.controller('AccueilCtrl', ['$scope', '$location', 'webStorage', 'cmWSFacade', 
-	                                  function($scope, $location, webStorage, cmWSFacade){
+	module.controller('AccueilCtrl', ['$scope', '$location', 'webStorage', 'cmWSFacade', 'AccueilService', 
+	                                  function($scope, $location, webStorage, cmWSFacade, AccueilService){
+
+		//Get position $info_geo
+		$scope.longitude = webStorage.session.get('$info_geo').longitude; 
+		$scope.latitude = webStorage.session.get('$info_geo').latitude; 
 		
-		$scope.nom_user = webStorage.session.get('$info_user').nom;
-		$scope.ville_actu = webStorage.session.get('$info_geo').city + '   '
-		+ webStorage.session.get('$info_geo').host;
+		//Configue google
+		angular.extend($scope, {
+			position: {
+				coords: {
+					latitude: $scope.latitude,
+					longitude: $scope.longitude
+				}
+			},
+			/** the initial center of the map */
+			centerProperty: {
+				latitude: $scope.latitude,
+				longitude: $scope.longitude
+			},
+			/** the initial zoom level of the map */
+			zoomProperty: 8,
+			/** list of markers to put in the map */
+			markersProperty: [ {
+				latitude: $scope.latitude,
+				longitude: $scope.longitude
+			}],
+			// These 2 properties will be set when clicking on the map
+			clickedLatitudeProperty: null,        
+			clickedLongitudeProperty: null,
+			eventsProperty: {
+				click: function (mapModel, eventName, originalEventArgs) {        
+					// c'est le scope de directive
+					console.log("user defined event on map directive with scope", this);
+					console.log("user defined event: " + eventName, mapModel, originalEventArgs);
+				}
+			}
+		});
+		
+		
+		
+		//Get All liste de styles
+		AccueilService.getAllStyles().success(function(data, status){
+			console.log(data);
+			$scope.stylesTous = data;
+			
+			AccueilService.getStylesByName("Chenyang").success(function(data, status){
+				$scope.stylesByUser = data;
+				$scope.stylesReste = _.filter($scope.stylesTous, function(obj){
+					//if obj not in stylesByUser
+					if(!_.contains(_.pluck($scope.stylesByUser, 'id_style'), obj.id_style)){
+						return obj;
+					}
+				});				
+			});
+			
+		});
+		
 
 		
-		$scope.rechercher = function(){
-			if($scope.mon_radio==1){
-				$location.path('/festivales');
-			}else if($scope.mon_radio==2){
-				$location.path('/concerts');
-			}
-		};
 		
-		
-		
-		/*$scope.getData = function(){
-			cmWSFacade.cmWSGet("tasks").success(function(data){
-				console.log(data);
-				$scope.data_return = data;
-			}).error(function(data, status){
-				console.log('error'+data+' '+status);
-				$scope.data_return = 'error server';
-			});
-		}*/
-		
-		
+
 	}]);
 
 })();

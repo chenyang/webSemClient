@@ -4,20 +4,48 @@
 }
 
 
+.header-block{
+	position:relative;
+	margin-top:50px;
+	width:100%;
+	margin:0px auto;
+	padding:30px;
+	padding-bottom:50px;
+	border:solid lightGrey 1px;
+}
 
-/***Page Login***/
+.header-block .left{
+	float:left;	
+}
+
+.header-block .right{
+	text-align:left;
+	float:right;
+}
+
+
+
+/***Page***/
 .login{
 	position:relative;
 	margin-top:50px;
-	width:50%;
+	width:100%;
 	margin:0px auto;
 	padding:30px;
 	border:solid lightGrey 1px;
 }
 
 .accueil{
-	width:50%;
+	width:100%;
 	margin:0px auto;
 	padding:30px;
 	border:solid lightGrey 1px;
+}
+
+.style-block{
+	
+}
+
+.style-item{
+	margin:10px;
 }

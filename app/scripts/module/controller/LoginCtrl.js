@@ -7,6 +7,7 @@
 
 
 		$scope.loadAddresseInfo = function(){
+			$rootScope.$broadcast('spinnerOn');
 			return $http({
 				method:'JSONP', 
 				url:"https://smart-ip.net/geoip-json?callback=JSON_CALLBACK"
@@ -28,6 +29,7 @@
 				
 				//WS freeipgeo
 				$scope.loadAddresseInfo().success(function(data, status){
+					$rootScope.$broadcast('spinnerOff');
 					
 					$scope.$emit('info_geo', data);
 					//redireger a la page d'accueil

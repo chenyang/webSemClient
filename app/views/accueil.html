@@ -1,50 +1,64 @@
-﻿<div class="accueil">
-	Bienvenu, <b>{{nom_user}}</b>  Vous êtes à <b>{{ville_actu}}</b>
+﻿
+<div ng-include="'template/header.html'"></div>
 
-		<div>
-			Veuillez choisir votre préférence de musique (par défaut):
-			<select class="input-medium" ng-model="donneesUser.type_musqiue" ng-options="p.type_musique as p.id for p in listePreference">
-			</select>
-		<div>
-			<span class="margin-medium"></span>
-			<button class="btn btn-success">Enregistrer</button>
-		</div>
-		
-	</div>
-
-	<br/><br/>
+<div class="accueil row">
 	
-	<div>
-		<b>Veuillez lancer une recherche:</b>
+	<!-- partie gauche -->
+	<div class="left span9">
+	
+		<!-- Google Map -->
+		<div class="google-map" 
+                center="position.coords"
+                zoom="zoomProperty" 
+                markers="markersProperty"
+                latitude="clickedLatitudeProperty"
+                longitude="clickedLongitudeProperty"
+                mark-click="true"
+                draggable="true"
+                fit="false"
+                events="eventsProperty">
+        </div>
+	
+		<a class="btn btn-primary margin-medium" href="#/concerts">
+			Trouver les événements autour de moi 
+		</a>
 	</div>
 	
-	<br/><br/>
-
-	<div class="form-horizontal">
-		<div class="control-group">
-			<label class="control-label">
-				<input value="1" type="radio" name=mon_radio ng-model="mon_radio">
-			</label>
-			 <div class="controls">
-				<b>Les festivales autour de moi:</b>
+	
+	<!-- partie droite -->
+	<div class="right span2">
+		<div class="styles-block">
+			<div class="style-item" ng-repeat="item in stylesByUser">
+				<span>
+					<a class="btn btn-inverse">{{item.libelle}}</a>
+					<a title="élever de liste de préférence" class="btn btn-danger btn-small margin-medium">
+	  					<i class="fa fa-minus"></i>
+	  				</a>
+  				</span>
 			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label">
-				<input value="2" type="radio" name=mon_radio ng-model="mon_radio">
-			</label>
-			 <div class="controls">
-			 	<b>Les concerts autour de moi:</b>
-			 </div>
-		</div>
-		
-		<div class="control-group">
-		    <div class="controls">
-		      <button type="submit" class="btn btn-primary" ng-click="rechercher()">Rechercher</button>
-		    </div>
-  		</div>
-		
+			
+			<!-- button ajouter -->
+			<ul>
+				<div class="dropdown" ng-controller="HeaderCtrl">
+			 		<a title="ajouter un style" class="acenter dropdown-toggle 
+			 		btn btn-success btn-small margin-medium">
+	  					<i class="fa fa-plus"></i> Ajouter
+	  				</a>
+				  	<ul class="dropdown-menu" role="menu">
+					    <li ng-repeat="choice in stylesReste">
+					      <a ng-click="menuFunc(choice)">{{choice.libelle}}</a>
+					    </li>
+				 	 </ul>
+				</div>
+			</ul>
+			
+			
+			
+			<div>
+			
+				
+			</div>
+		</div>	
 	</div>
 	
-
 </div>
