@@ -1,7 +1,8 @@
 /***RootView***/
 body{
-	background:rgba(0,0,0,0.75);
+	background-image:url('../images/music-background2.jpg');
 	padding-top:2px;
+	
 }
 
 .root-view{
@@ -18,7 +19,7 @@ body{
 	margin:0px auto;
 	padding:30px;
 	padding-bottom:50px;
-	border:solid rgba(0,0,0,0.8) 1px;
+	border:solid rgba(0,0,0,0.5) 1px;
 	background-image: url(../images/music-background.jpg);
 	background-repeat:no-repeat;
 }
@@ -45,8 +46,9 @@ body{
 .accueil{
 	margin:0px auto;
 	padding:30px;
-	border:solid black 1px;
-	background-image: url(../images/music-background2.jpg);
+	border:solid rgba(0,0,0,0.2) 1px;
+	/*background-image: url(../images/music-background2.jpg);*/
+	background-color:rgba(0,0,0,0.0);
 	background-repeat:no-repeat;
 }
 

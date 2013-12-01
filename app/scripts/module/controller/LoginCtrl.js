@@ -22,7 +22,6 @@
 		$scope.checkLogin = function(){
 			//function d'authentification
 			LoginService.checkLogin($scope.nom, $scope.pass).success(function(data, status){
-
 				if(data.result=='success'){
 					//aussi associer style du musique
 					$scope.type_musique = 'pop';
@@ -47,15 +46,13 @@
 						if(navigator.geolocation){
 							navigator.geolocation.getCurrentPosition($scope.maPosition);
 						}
-						
 					});
 
 				}else{// fause d'authentification
-					
 					alert('Utilisateur not existe');
 				}
-				
-				
+			}).error(function(data, status){
+				alert('Server error!');
 			});
 		}
 
