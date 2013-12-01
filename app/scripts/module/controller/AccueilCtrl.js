@@ -10,6 +10,11 @@
 		$scope.latitude = webStorage.session.get('$info_geo').latitude; 
 		$scope.$info_user = webStorage.session.get('$info_user');
 
+		$scope.nom_user = webStorage.session.get('$info_user').nom;
+		$scope.ville_actu = webStorage.session.get('$info_geo').city + '   '
+		+ webStorage.session.get('$info_geo').region_name;
+		
+		
 		//Configue google
 		angular.extend($scope, {
 			position: {

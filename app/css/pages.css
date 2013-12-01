@@ -1,17 +1,26 @@
 /***RootView***/
-.root-view{
-	margin-top:80px;
+body{
+	background:rgba(0,0,0,0.75);
+	padding-top:2px;
 }
 
+.root-view{
+	/*margin-top:80px;*/
+}
+
+.container{
+	
+}
 
 .header-block{
 	position:relative;
 	margin-top:50px;
-	width:100%;
 	margin:0px auto;
 	padding:30px;
 	padding-bottom:50px;
-	border:solid lightGrey 1px;
+	border:solid rgba(0,0,0,0.8) 1px;
+	background-image: url(../images/music-background.jpg);
+	background-repeat:no-repeat;
 }
 
 .header-block .left{
@@ -24,22 +33,21 @@
 }
 
 
-
 /***Page***/
 .login{
 	position:relative;
 	margin-top:50px;
-	width:100%;
 	margin:0px auto;
 	padding:30px;
-	border:solid lightGrey 1px;
+	width:50%;
 }
 
 .accueil{
-	width:100%;
 	margin:0px auto;
 	padding:30px;
-	border:solid lightGrey 1px;
+	border:solid black 1px;
+	background-image: url(../images/music-background2.jpg);
+	background-repeat:no-repeat;
 }
 
 .style-block{

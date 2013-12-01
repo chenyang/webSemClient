@@ -5,11 +5,11 @@
 	module.controller('HeaderCtrl', ['$scope', 'cmWSFacade','webStorage', '$location',
 	                                 function($scope, cmWSFacade, webStorage, $location){
 		
-		$scope.nom_user = webStorage.session.get('$info_user').nom;
+	/*	$scope.nom_user = webStorage.session.get('$info_user').nom;
 		$scope.ville_actu = webStorage.session.get('$info_geo').city + '   '
-		+ webStorage.session.get('$info_geo').region_name;
+		+ webStorage.session.get('$info_geo').region_name;*/
 		
-		
+		//Items menu
 		$scope.items = [
 		                "logout"
 		              ];

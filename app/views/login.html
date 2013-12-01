@@ -1,3 +1,10 @@
+<div class="logo acenter">
+	<h1><b>MUSIC EVENT</b></h1>
+	<img src="images/music-event2.jpg" class="margin-small">
+	<img src="images/music-event.jpg" class="margin-small">
+	<img src="images/music-event3.jpg" class="margin-small">
+</div>
+
 <form class="login form-horizontal">
 
 	<div class="control-group">
@@ -16,14 +23,20 @@
 	
 	<div class="control-group">
 	    <div class="controls">
-	      <a class="btn btn-primary" href="#/nouveauCompte">créer un nouveau compte</a>
+	      <button type="submit" class="btn btn-primary btn-large" ng-click="checkLogin()">
+	      <i class="fa fa-music"></i> Se connecter
+	      </button>
+	    </div>
+  	</div>
+  	
+  	
+  	<div class="control-group">
+	    <div class="controls">
+	      <a class="btn btn-primary" href="#/nouveauCompte">
+	      <i class="fa fa-pencil-square-o"></i> créer un nouveau compte
+	      </a>
 	    </div>
   	</div>
 	
-	<div class="control-group">
-	    <div class="controls">
-	      <button type="submit" class="btn btn-primary" ng-click="checkLogin()">Se connecter</button>
-	    </div>
-  	</div>
 
 </form>

@@ -5,6 +5,9 @@
 	
 	<!-- partie gauche -->
 	<div class="left span9">
+		<div>
+			<h4><b>Bienvenu: {{nom_user}} Vous êtes à {{ville_actu}}</b></h4>
+		</div>
 	
 		<!-- Google Map -->
 		<div class="google-map" 
@@ -18,21 +21,20 @@
                 fit="false"
                 events="eventsProperty">
         </div>
-	
-		<a class="btn btn-primary margin-medium" href="#/concerts">
-			Trouver les événements autour de moi 
-		</a>
+
 	</div>
 	
 	
 	<!-- partie droite -->
 	<div class="right span2">
 		<div class="styles-block">
+			<h4><b><i class="fa fa-music"></i> Styles préférés</b></h4>
 			<div class="style-item" ng-repeat="item in stylesByUser">
 				<span>
+					<i class="fa fa-star"></i>
 					<a class="btn btn-inverse">{{item.label}}</a>
 					<a ng-click="deleteUserStyles(item.id)" title="élever de liste de préférence" class="btn btn-danger btn-small margin-medium">
-	  					<i class="fa fa-minus"></i>
+	  					<i class="fa fa-trash-o"></i>
 	  				</a>
   				</span>
 			</div>
@@ -53,8 +55,9 @@
 			</ul>
 			
 			<div>
-			
-				
+				<a class="btn btn-primary margin-medium" href="#/concerts">
+				<i class="fa fa-search"></i> Trouver les événements 
+				</a>
 			</div>
 		</div>	
 	</div>
