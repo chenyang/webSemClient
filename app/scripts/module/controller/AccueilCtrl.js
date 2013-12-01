@@ -8,7 +8,8 @@
 		//Get position $info_geo
 		$scope.longitude = webStorage.session.get('$info_geo').longitude; 
 		$scope.latitude = webStorage.session.get('$info_geo').latitude; 
-		
+		$scope.$info_user = webStorage.session.get('$info_user');
+
 		//Configue google
 		angular.extend($scope, {
 			position: {
@@ -40,29 +41,38 @@
 				}
 			}
 		});
-		
-		
-		
-		//Get All liste de styles
-		AccueilService.getAllStyles().success(function(data, status){
-			console.log(data);
-			$scope.stylesTous = data;
-			
-			AccueilService.getStylesByName("Chenyang").success(function(data, status){
-				$scope.stylesByUser = data;
-				$scope.stylesReste = _.filter($scope.stylesTous, function(obj){
-					//if obj not in stylesByUser
-					if(!_.contains(_.pluck($scope.stylesByUser, 'id_style'), obj.id_style)){
-						return obj;
-					}
-				});				
-			});
-			
-		});
-		
 
 		
+		$scope.addUserStyles = function(style_id){
+			AccueilService.addUserStyles($scope.$info_user.nom, style_id).success(function(data, status){
+				$scope.stylesByUser = data.binding;
+			});
+		}
+
+		$scope.deleteUserStyles = function(style_id){
+			AccueilService.deleteUserStyles($scope.$info_user.nom, style_id).success(function(data, status){
+				$scope.stylesByUser = data.binding;
+			});
+		}
 		
+
+		$scope.getAvailables = function(){
+			//Get Liste des styles non preferes par users
+			AccueilService.getStylesAvailableByUserName($scope.$info_user.nom).success(function(data, status){
+				$scope.stylesReste = data.binding;
+			});
+		}
+
+		
+		$scope.init = function(){
+			//Get Liste styles from user
+			AccueilService.getStylesByUserName($scope.$info_user.nom).success(function(data, status){
+				$scope.stylesByUser = data.binding;
+			});
+		}
+		//Methodes a initialiser
+		$scope.init();
+
 
 	}]);
 

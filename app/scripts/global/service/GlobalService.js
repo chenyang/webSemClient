@@ -74,7 +74,7 @@
 				return {
 					cmWSGet:function(uri){
 						$rootScope.$broadcast('spinnerOn');
-						console.log('NOW GET'+compo_url+uri);
+						console.log('NOW GET '+compo_url+uri);
 						return $http({
 							url:compo_url+uri,
 							method:"GET", 

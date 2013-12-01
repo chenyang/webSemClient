@@ -7,7 +7,7 @@
 		
 		$scope.nom_user = webStorage.session.get('$info_user').nom;
 		$scope.ville_actu = webStorage.session.get('$info_geo').city + '   '
-		+ webStorage.session.get('$info_geo').host;
+		+ webStorage.session.get('$info_geo').region_name;
 		
 		
 		$scope.items = [
