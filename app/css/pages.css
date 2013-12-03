@@ -9,8 +9,9 @@ body{
 	/*margin-top:80px;*/
 }
 
-.container{
-	
+.mycontainer{
+	width:95%;
+	margin:auto;
 }
 
 .header-block{

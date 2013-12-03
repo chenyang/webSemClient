@@ -42,10 +42,28 @@
 						console.log(data);
 						console.log(status);
 						alert('ip_add serveur ne fonctionne pas!');
-						//alert('on va choisir notre propre adresse');
+						//alert('on va choisir notre propre adresse');											
 						if(navigator.geolocation){
 							navigator.geolocation.getCurrentPosition($scope.maPosition);
 						}
+						
+						
+						//Mettre en statique
+						$rootScope.$broadcast('spinnerOff');
+						var geoData = {
+							"ip":"162.38.218.204",
+							"region_name":"Languedoc-Roussillon",
+							"latitude":43.6109,
+							"longitude":3.8772,
+							"city":"Montpellier",
+							"region_code":"A9",
+							"country_code":"FR", 
+							"country_name":"France"
+						}
+						$scope.$emit('info_geo', geoData);
+						//redireger a la page d'accueil
+						$location.path('/accueil');
+						
 					});
 
 				}else{// fause d'authentification
