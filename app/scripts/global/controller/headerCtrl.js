@@ -11,6 +11,8 @@
 		
 		//Items menu
 		$scope.items = [
+		                "accueil",
+		                "evenement",
 		                "logout"
 		              ];
 		
@@ -19,6 +21,10 @@
 			if(choice=='logout'){
 				webStorage.session.clear();
 				$location.path('/login');
+			}else if(choice=='accueil'){
+				$location.path('/accueil');
+			}else if(choice=='evenement'){
+				$location.path('/festivales');
 			}
 		};
 		

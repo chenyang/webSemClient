@@ -16,7 +16,7 @@
                 markers="markersProperty"
                 latitude="clickedLatitudeProperty"
                 longitude="clickedLongitudeProperty"
-                mark-click="true"
+                mark-click="false"
                 draggable="true"
                 fit="false"
                 events="eventsProperty">
@@ -55,10 +55,24 @@
 			</ul>
 			
 			<div>
-				<a class="btn btn-primary margin-medium" href="#/festivales">
-				<i class="fa fa-search"></i> Trouver les événements 
+				<a class="btn btn-primary margin-medium" ng-click="meLocaliser()">
+				<i class="fa fa-search"></i> Me Localiser
 				</a>
 			</div>
+			
+			<div>
+				<a class="btn btn-primary margin-medium" ng-click="getAllEvenementsSurMap()">
+				<i class="fa fa-map-marker"></i> Afficher événements sur Map
+				</a>
+			</div>
+			
+			<div>
+				<a class="btn btn-primary margin-medium" href="#/festivales">
+				<i class="fa fa-calendar"></i> Afficher événements en détail 
+				</a>
+			</div>
+
+			
 		</div>	
 	</div>
 	
