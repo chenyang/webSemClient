@@ -11,7 +11,6 @@
 		$scope.$info_user = webStorage.session.get('$info_user');
 
 		$scope.dataEvenements = [];
-
 		$scope.gridOptions = {
 				data: 'dataEvenements',
 				i18n:'fr',
@@ -35,7 +34,7 @@
 
 		$scope.init = function(){
 			//Get Liste styles from user
-			EvenementService.getAllEvenements($scope.latitude, $scope.longitude, 50).success(function(data, status){
+			EvenementService.getAllEvenements($scope.latitude, $scope.longitude, $scope.$info_user.distance).success(function(data, status){
 				$scope.dataEvenements = data.binding;
 				console.log($scope.dataEvenements);
 			});

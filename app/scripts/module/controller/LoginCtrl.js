@@ -29,7 +29,8 @@
 					$scope.$emit('info_user', {
 						nom : $scope.nom,
 						pass : $scope.pass, 
-						type_musique : $scope.type_musique
+						type_musique : [], 
+						distance:0
 					});
 					
 					//WS freeipgeo

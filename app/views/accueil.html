@@ -18,7 +18,7 @@
                 longitude="clickedLongitudeProperty"
                 mark-click="false"
                 draggable="true"
-                fit="false"
+                fit="true"
                 events="eventsProperty">
         </div>
 
@@ -61,13 +61,17 @@
 			</div>
 			
 			<div>
+				<b style="color:black">Préciser la distance</b>(KM)<input class="text" ng-model="distance">
+			</div>
+			
+			<div>
 				<a class="btn btn-primary margin-medium" ng-click="getAllEvenementsSurMap()">
 				<i class="fa fa-map-marker"></i> Afficher événements sur Map
 				</a>
 			</div>
 			
 			<div>
-				<a class="btn btn-primary margin-medium" href="#/festivales">
+				<a class="btn btn-primary margin-medium" ng-click="afficherEvenementsEnDetaille()">
 				<i class="fa fa-calendar"></i> Afficher événements en détail 
 				</a>
 			</div>

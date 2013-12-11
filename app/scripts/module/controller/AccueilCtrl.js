@@ -13,6 +13,7 @@
 		$scope.nom_user = webStorage.session.get('$info_user').nom;
 		$scope.ville_actu = webStorage.session.get('$info_geo').city + '   '
 		+ webStorage.session.get('$info_geo').region_name;
+		$scope.distance = webStorage.session.get('$info_user').distance;
 
 
 
@@ -72,21 +73,31 @@
 		}
 		
 		$scope.meLocaliser = function(){
+			//Markers
 			$scope.markers = [];
 			$scope.markers.push({latitude:$scope.latitude, longitude:$scope.longitude});
 			$scope.markersProperty = $scope.markers;
+			//Centraliser la Position
+			$scope.position.coords= {latitude:$scope.latitude, longitude:$scope.longitude};
 		}
 
 		$scope.getAllEvenementsSurMap = function(){
-			EvenementService.getAllEvenements($scope.latitude, $scope.longitude, 50).success(function(data, status){
+			EvenementService.getAllEvenements($scope.latitude, $scope.longitude, $scope.distance).success(function(data, status){
 				$scope.markers = data.binding;
 				$scope.markersProperty = $scope.markers;	
 				console.log($scope.markers);
 			});
 		}
 
+		$scope.afficherEvenementsEnDetaille = function(){
+			$scope.$info_user.distance = $scope.distance;
+			webStorage.session.add('$info_user', $scope.$info_user);
+			$location.path('/festivales');
+		}
+		
 
 		$scope.init = function(){
+			
 			//Get Liste styles from user
 			AccueilService.getStylesByUserName($scope.$info_user.nom).success(function(data, status){
 				$scope.stylesByUser = data.binding;
