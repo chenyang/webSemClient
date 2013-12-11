@@ -14,18 +14,14 @@
     "modernizr": "2.6.2",
     "jquery-ui": "1.10.2",
     "angular-ui": "0.4.0",
+    "angular-ui-slider":"https://github.com/angular-ui/ui-slider.git",
     "angular-bootstrap": "0.3.0",
     "bootstrap": "2.3.1",
     "font-awesome": "https://github.com/FortAwesome/Font-Awesome.git",
     "ng-grid": "https://github.com/angular-ui/ng-grid.git",
     "angular-scope-ready": "https://github.com/yearofmoo/AngularJS-Scope.onReady.git",
     "angular-strap": "https://github.com/mgcrea/angular-strap.git",
-    "underscore.string": "https://github.com/epeli/underscore.string.git",
-    "jquery-popover": "https://github.com/klaas4/jQuery.popover.git",
-    "hammer": "https://github.com/EightMedia/hammer.js.git",
-    "angular-google-chart": "https://github.com/bouil/angular-google-chart.git",
-    "nvd3": "1.1.10-beta",
-    "angular-sortable": "https://github.com/angular-ui/ui-sortable.git"
+    "underscore.string": "https://github.com/epeli/underscore.string.git"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.5",
