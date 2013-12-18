@@ -90,6 +90,11 @@
 				$location.path('/groupes');
 		}
 		
+		$scope.afficherArtistesByGenre = function(){
+			//les types musiques sont deja configure ds session
+			$location.path('/artistes');
+	}
+		
 		$scope.afficherEvenementsEnDetaille = function(){
 			$scope.$info_user.distance = $scope.distance;
 			webStorage.session.add('$info_user', $scope.$info_user);
