@@ -6,8 +6,8 @@
 	                                 function($rootScope, cmWSFacade,webStorage){
 
 		return{
-			getAllEvenements:function(lat, lgt, distance){
-				return cmWSFacade.cmWSGet('EvenementService/getAllEvenements?lat='+lat+'&lgt='+lgt+'&distance='+distance);
+			getAllEvenements:function(lat, lgt, radius, city, genre){
+				return cmWSFacade.cmWSGet('EvenementService/getAllEvenements?lat='+lat+'&lgt='+lgt+'&radius='+radius+"&city="+city+"&genre="+genre);
 			}, 
 			
 			getGroupesByGenre:function(stylesByUser){
