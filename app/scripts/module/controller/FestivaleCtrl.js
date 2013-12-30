@@ -41,13 +41,11 @@
 				$scope.dataEvenements = data.binding;
 				console.log($scope.dataEvenements);
 			});
-			
+		}
+
 		//Methode a initialiser
 		$scope.init();
-
-
-
-
+		
 	}]);
 
 })();
