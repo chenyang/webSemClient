@@ -79,8 +79,10 @@
 		}
 
 		$scope.getAllEvenementsSurMap = function(){
-			EvenementService.getAllEvenements($scope.latitude, $scope.longitude, $scope.distance).success(function(data, status){
-				$scope.markers = data.binding;
+			$scope.city = webStorage.session.get('$info_geo').region_name; 
+			EvenementService.getAllEvenements($scope.latitude, $scope.longitude, $scope.$info_user.distance, $scope.city, $scope.genre).success(function(data, status){
+				
+				$scope.markers = _.pluck(data.binding, 'location');
 				$scope.markersProperty = $scope.markers;	
 			});
 		}
