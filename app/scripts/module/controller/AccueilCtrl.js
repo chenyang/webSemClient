@@ -79,7 +79,7 @@
 		}
 
 		$scope.getAllEvenementsSurMap = function(){
-			$scope.city = webStorage.session.get('$info_geo').region_name; 
+			$scope.city = webStorage.session.get('$info_geo').city; 
 			EvenementService.getAllEvenements($scope.latitude, $scope.longitude, $scope.$info_user.distance, $scope.city, $scope.genre).success(function(data, status){
 				
 				$scope.markers = _.pluck(data.binding, 'location');
@@ -107,7 +107,14 @@
 		$scope.$watch('stylesByUser', function(){
 			$scope.$info_user.type_musique = $scope.stylesByUser;
 			webStorage.session.add('$info_user', $scope.$info_user);
+		}, true);
+		
+		
+		$scope.$watch('distance', function(){
+			$scope.$info_user.distance = $scope.distance;
+			webStorage.session.add('$info_user', $scope.distance);
 		}, true)
+		
 
 		$scope.init = function(){
 			//Get Liste styles from user

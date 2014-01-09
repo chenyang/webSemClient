@@ -8,7 +8,7 @@
 		//Get position $info_geo
 		$scope.longitude = webStorage.session.get('$info_geo').longitude; 
 		$scope.latitude = webStorage.session.get('$info_geo').latitude; 
-		$scope.city = webStorage.session.get('$info_geo').region_name; 
+		$scope.city = webStorage.session.get('$info_geo').city; 
 		$scope.$info_user = webStorage.session.get('$info_user');
 		$scope.genre = "";
 
