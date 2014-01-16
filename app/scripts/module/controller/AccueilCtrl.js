@@ -86,7 +86,7 @@
 					var toPut = {
 							showWindow:false,
 							coords:item, 
-							//icon:'images/music_logo.jpg', 
+							icon:'images/lat_small.png', 
 							closeClick:function(){
 								item.showWindow = false;
 								$scope.$apply();
