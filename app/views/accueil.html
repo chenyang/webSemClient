@@ -10,8 +10,8 @@
 		</div>
 	
 		<!-- Google Map -->
-		<div class="google-map" 
-                center="position.coords"
+		<!-- <div class="google-map">
+			 center="position.coords"
                 zoom="zoomProperty" 
                 markers="markersProperty"
                 latitude="clickedLatitudeProperty"
@@ -19,8 +19,47 @@
                 mark-click="false"
                 draggable="true"
                 fit="true"
-                events="eventsProperty">
-        </div>
+                events="eventsProperty"
+          </div>      
+           -->
+         {{center}}       
+                
+         <google-map
+         	center="map.center" 
+			zoom="map.zoom"
+			draggable="true"
+		>
+		
+			<marker coords="myPositionMarker.coords">
+			</marker>
+		
+			<window show="true" coords="myPositionMarker.coords">
+	            I should not be attached to a
+	            marker.
+        	</window>
+        	
+        	
+        	<!-- <marker ng-repeat="m in map.markers" coords="m" icon="m.icon" click="onMarkerClicked(m)">
+            <marker-label content="m.title" anchor="22 0" class="marker-labels"/>
+	            <window show="m.showWindow" closeClick="m.closeClick()">
+	                <p>This is an info window at {{ m.latitude | number:4 }}, {{ m.longitude | number:4 }}!</p>
+	
+	                <p class="muted">My marker will stay open when the window is popped up!</p>
+	            </window>
+        	</marker> -->
+		
+			
+			<marker ng-model="eventMarkers" ng-repeat="em in eventMarkers" coords="em.coords" icon="em.icon" click="onMarkerClicked(em)">
+				<window show="em.showWindow" closeClick="em.closeClick()">
+					<p>L'événement:{{em.coords.locName}}
+					<p>Adresse: {{em.coords.address}}</p>
+					<p>coordonnée: {{em.coords.latitude}}, {{em.coords.longitude}}</p>
+				</window>
+			</marker>
+			
+			
+		
+		</google-map>       
 
 	</div>
 	
