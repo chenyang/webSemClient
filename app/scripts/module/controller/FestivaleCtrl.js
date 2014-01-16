@@ -36,10 +36,14 @@
 
 
 		$scope.init = function(){
-			//Get Liste styles from user
+			//Get Liste evenements
 			EvenementService.getAllEvenements($scope.latitude, $scope.longitude, $scope.$info_user.distance, $scope.city, $scope.genre).success(function(data, status){
 				$scope.dataEvenements = data.binding;
 				console.log($scope.dataEvenements);
+			}).error(function(data, status){
+				console.log('error in getAllEvenements');
+				console.log(data);
+				console.log(status);
 			});
 		}
 

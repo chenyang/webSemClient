@@ -30,8 +30,19 @@
 				return cmWSFacade.cmWSGet('EvenementService/getArtistsByGenre?genre1='+genre1+'&genre2='+genre2+'&genre3='+genre3+'&genre4='+genre4);
 			}, 
 			
-			getAlbumsByArtiste:function(idJamendoArtiste){
-				return cmWSFacade.cmWSGet('EvenementService/getAlbumsByArtiste?idJamendo='+idJamendoArtiste);
+			getAlbumsByArtiste:function(idJamendoArtiste, artistName){
+				
+				//change artistName format: ex. vincent j==>Vincent_J
+				var finalName = "";
+				artistName = _.clean(artistName);
+				var words = _.words(artistName, " ");
+				_.each(words, function(item){
+					finalName=_.join("_", finalName, _.capitalize(item));
+				});
+				finalName = _.ltrim(finalName, '_');
+				console.log(finalName);
+				
+				return cmWSFacade.cmWSGet('EvenementService/getAlbumsByArtiste?idJamendo='+idJamendoArtiste+"&artistName="+finalName);
 			}
 					
 		}

@@ -34,8 +34,10 @@
 			</marker>
 		
 			<window show="true" coords="myPositionMarker.coords">
-	            I should not be attached to a
-	            marker.
+	            <p>Vous êtes localisé ici:
+		            {{myPositionMarker.coords.latitude}}, 
+		            {{myPositionMarker.coords.longitude}}
+	            </p>
         	</window>
         	
         	
@@ -51,9 +53,9 @@
 			
 			<marker ng-model="eventMarkers" ng-repeat="em in eventMarkers" coords="em.coords" icon="em.icon" click="onMarkerClicked(em)">
 				<window show="em.showWindow" closeClick="em.closeClick()">
-					<p>L'événement:{{em.coords.locName}}
-					<p>Adresse: {{em.coords.address}}</p>
-					<p>coordonnée: {{em.coords.latitude}}, {{em.coords.longitude}}</p>
+					<p><b>L'événement</b>:{{em.coords.locName}}
+					<p><b>Adresse</b>: {{em.coords.address}}</p>
+					<p><b>Coordonnée</b>: {{em.coords.latitude}}, {{em.coords.longitude}}</p>
 				</window>
 			</marker>
 			
