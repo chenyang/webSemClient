@@ -2,36 +2,45 @@
 	'use strict';
 	var module = angular.module('mod.controller');
 
-	module.controller('NouveauCompteCtrl', ['$scope', 'cmWSFacade', function($scope, cmWSFacade){
-		
-		console.log($scope.nom);
-		
-		$scope.open = function(){
+	module.controller('NouveauCompteCtrl', ['$scope', 'cmWSFacade', '$modal', '$log', 
+	                                        function($scope, cmWSFacade, $modal, $log){
+
+		/*$scope.open = function(){
 			console.log('open');
-			
-			
-$scope.items = ['item1', 'item2', 'item3'];
-			
 			var modalInstance = $modal.open({
+				scope:$scope,
 				templateUrl: 'template/templateAnnotationModal.html',
-				//controller: ModalInstanceCtrl,
+				controller: ModalInstanceCtrl,
 				resolve: {
-					items: function () {
-						return $scope.items;
-					}
+						annotation:function(){
+						return $scope.annotation;
+					}, 
 				}
 			});
 
-			modalInstance.result.then(function (selectedItem) {
-				$scope.selected = selectedItem;
+			//Treat returned values
+			modalInstance.result.then(function (result) {
+				console.log(result);
 			}, function () {
 				$log.info('Modal dismissed at: ' + new Date());
 			});
-			
-			
 		}
+
+		// Please note that $modalInstance represents a modal window (instance) dependency.
+		// It is not the same as the $modal service used above.
 		
-		
+		//Init scope of Modal
+		var ModalInstanceCtrl = function ($scope, $modalInstance) {
+			$scope.annoter = function(annotation){
+				var result = {
+					annotation:annotation
+				}
+				$modalInstance.close(result);
+			}
+			$scope.cancel = function () {
+				$modalInstance.dismiss('cancel');
+			};
+		};*/
 		
 	}]);
 

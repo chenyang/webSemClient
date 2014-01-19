@@ -13,7 +13,7 @@
 //===>information for the server who provides REST service
   mod.constant('serverRESTConfig', {
     protocal:'http://', 
-    domain:'192.168.32.135',
+    domain:'localhost',
     port:8080, 
     context:'/FindEvent/rest/'
   });

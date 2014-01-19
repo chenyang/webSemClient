@@ -2,9 +2,8 @@
 	'use strict';
 	var module = angular.module('mod.controller');
 
-	module.controller('FestivaleCtrl', ['$scope', 'cmWSFacade', 'webStorage', 'EvenementService','BusinessService',
-	                                    function($scope, cmWSFacade, webStorage,EvenementService, BusinessService){
-
+	module.controller('FestivaleCtrl', ['$scope', 'cmWSFacade', 'webStorage', 'EvenementService','BusinessService','$modal',
+	                                    function($scope, cmWSFacade, webStorage,EvenementService, BusinessService, $modal){
 		//Get position $info_geo
 		$scope.longitude = webStorage.session.get('$info_geo').longitude; 
 		$scope.latitude = webStorage.session.get('$info_geo').latitude; 
@@ -31,7 +30,7 @@
 				             {field:'performers', displayName:'Artists Participants', cellTemplate:'<span class="ngCellText">{{row.entity.performers[0]}}</span>'},
 				             {field:'location.locName', displayName:'Nom Location', cellTemplate:'<span class="ngCellText">{{row.entity.location.locName}}</span>'}, 
 				             {field:'location.address', displayName:'Adresse', cellTemplate:'<span class="ngCellText">{{row.entity.location.address}}</span>'}, 
-				             {field:'', displayName:'Annotation', cellTemplate:'<div class="ngCellText acenter"><button class="btn btn-success" ng-click="annoter(row.entity)">Annoter</button></div>'}, 
+				             {field:'', displayName:'Annotation', cellTemplate:'<div class="ngCellText acenter"><button class="btn btn-success" ng-click="open(row.entity)">Annoter</button></div>'}, 
 				             ]
 		}
 
@@ -49,33 +48,69 @@
 		}
 
 
-		$scope.annoter = function(rowEntity){
-
+		/**
+		 * Partie Annotation Modal
+		 */
+		$scope.open = function(rowEntity){
+			console.log('open');
 			console.log(rowEntity);
 			$scope.$info_user = webStorage.session.get('$info_user');
-
 			var content = {
 					tag : "",
-					annotation : "Good not bad",
+					annotation : "",
 					event : rowEntity.name, 
-					date : "2014-01-19",
+					date : new Date(),
 					lat : $scope.latitude,
 					lgt : $scope.longitude,
 					nom : $scope.$info_user.nom,
 					mail : $scope.$info_user.email	
 			}
 
-			BusinessService.addAnnotation(content).success(function(data, status){
-				if(data.result=='success'){
-					
-				}else{
-					console.log('error');
+			var modalInstance = $modal.open({
+				scope:$scope,
+				templateUrl: 'template/templateAnnotationModal.html',
+				controller: ModalInstanceCtrl,
+				resolve: {
+					event:function(){
+						return rowEntity.name;
+					}
+			/*	annotation:function(){
+						return $scope.annotation;
+					},*/ 
 				}
-			}).error(function(data, status){
-				console.log('error');
-			})
+			});
+
+			//Treat returned values
+			modalInstance.result.then(function (result) {
+				console.log('annoted with'+result);
+				content.annotation = result.annotation;
+				BusinessService.addAnnotation(content).success(function(data, status){
+					if(data.result=='success'){
+						console.log('success');
+					}else{
+						console.log('error');
+					}
+				}).error(function(data, status){
+					console.log('error');
+				});
+			}, function () {
+				console.log('Modal dismissed at: ' + new Date());
+			});
 		}
 
+		//Init scope of Modal
+		var ModalInstanceCtrl = function ($scope, $modalInstance, event) {
+			$scope.eventName = event;
+			$scope.annoter = function(annotation){
+				var result = {
+						annotation:annotation
+				}
+				$modalInstance.close(result);
+			}
+			$scope.cancel = function () {
+				$modalInstance.dismiss('cancel');
+			};
+		};
 
 
 
