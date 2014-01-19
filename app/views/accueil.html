@@ -4,7 +4,7 @@
 <div class="accueil row">
 	
 	<!-- partie gauche -->
-	<div class="left span9">
+	<div class="left col-sm-9">
 		<div>
 			<h4><b>Bienvenu: {{nom_user}} Vous êtes à {{ville_actu}}</b></h4>
 		</div>
@@ -53,7 +53,8 @@
 			
 			<marker ng-model="eventMarkers" ng-repeat="em in eventMarkers" coords="em.coords" icon="em.icon" click="onMarkerClicked(em)">
 				<window show="em.showWindow" closeClick="em.closeClick()">
-					<p><b>L'événement</b>:{{em.coords.locName}}
+					<p><b>L'événement</b>:{{em.coords.name}}
+					<p><b>Location</b>:{{em.coords.locName}}
 					<p><b>Adresse</b>: {{em.coords.address}}</p>
 					<p><b>Coordonnée</b>: {{em.coords.latitude}}, {{em.coords.longitude}}</p>
 				</window>
@@ -67,13 +68,13 @@
 	
 	
 	<!-- partie droite -->
-	<div class="right span3">
+	<div class="right col-sm-3">
 		<div class="styles-block">
 			<h4><b><i class="fa fa-music"></i> Genres préférés</b></h4>
 			<div class="style-item" ng-repeat="item in stylesByUser">
 				<span>
 					<i class="fa fa-star" style="color:yellow"></i>
-					<a class="btn btn-inverse">{{item.label}}</a>
+					<a class="btn btn-inverse"><b>{{item.label}}</b></a>
 					<a ng-click="deleteUserStyles(item.id)" title="élever de liste de préférence" class="btn btn-danger btn-small margin-medium">
 	  					<i class="fa fa-trash-o"></i>
 	  				</a>

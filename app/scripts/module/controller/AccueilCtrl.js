@@ -35,8 +35,6 @@
 	    };
 
 
-
-
 		/**
 		 * Angular Functions
 		 */
@@ -81,8 +79,9 @@
 		$scope.getAllEvenementsSurMap = function(){
 			$scope.city = webStorage.session.get('$info_geo').city; 
 			EvenementService.getAllEvenements($scope.latitude, $scope.longitude, $scope.$info_user.distance, $scope.city, $scope.genre).success(function(data, status){
-				var allLocations = _.pluck(data.binding, 'location');
+				var allLocations = _.pluck(data.binding, 'location');//For googlemap markers
 				_.each(allLocations, function(item){
+					item.name = data.binding.name; //name of event
 					var toPut = {
 							showWindow:false,
 							coords:item, 
@@ -91,13 +90,10 @@
 								item.showWindow = false;
 								$scope.$apply();
 							}
-
 					}
 					$scope.eventMarkers.push(toPut);
 				});
-
 				console.log($scope.eventMarkers);
-
 			});
 		}
 
